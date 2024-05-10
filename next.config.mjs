@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       {
-        hostname: 'cdn.sanity.io',
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        pathname: "**",
       },
     ],
   },
+};
 
-  reactStrictMode: true,
-}
-
-export default config
+export default nextConfig;

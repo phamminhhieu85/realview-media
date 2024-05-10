@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  next-app:
+    container_name: next-app
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
+      args:
+        SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+        EMAIL_TO_EN: ${EMAIL_TO_EN}
+        EMAIL_TO_VN: ${EMAIL_TO_VN}
+        EMAIL_FROM: ${EMAIL_FROM}
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true
